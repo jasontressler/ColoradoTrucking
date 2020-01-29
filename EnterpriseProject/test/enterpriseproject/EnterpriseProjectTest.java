@@ -60,27 +60,30 @@ public class EnterpriseProjectTest {
                 switch(j){
                     case 0:
                         data.setUSDOT(colVals.get(j).getText().replace("\n","").replace("\r",""));
-                        System.out.println("USDot: "+data.getUSDOT());
+                        //System.out.println("USDot: "+data.getUSDOT());
                         break;
                     case 1:
                         data.setLegalName(colVals.get(j).getText().replace("\n","").replace("\r","").replace("'","''"));
-                        System.out.println("Legal Name: "+data.getLegalName());
+                       // System.out.println("Legal Name: "+data.getLegalName());
                         break;
                     case 2:
-                        data.setAddress(colVals.get(j).getText().replace("\n","").replace("\r",""));
-                        System.out.println("Address: "+data.getAddress());
+                        data.setAddress(colVals.get(j).getText().replace("\n"," ").replace("\r"," "));
+                       // System.out.println("Address: "+data.getAddress());
                         break;
                     case 3:
                         data.setOOSReason(colVals.get(j).getText().replace("\n","").replace("\r",""));
-                        System.out.println("OOS Reason: "+data.getOOSReason());
+                       // System.out.println("OOS Reason: "+data.getOOSReason());
                         break;
                     case 4:
                         data.setOOSDate(colVals.get(j).getText().replace("\n","").replace("\r",""));
-                        System.out.println("OOS Date: "+data.getOOSDate());
+                        String month =data.getOOSDate().substring(0,2);
+                        String day = data.getOOSDate().substring(3,5);
+                        String year = data.getOOSDate().substring(6);
+                        data.setOOSDate(year+"-"+ month+"-"+day);
                         break;
                     case 5:
                         data.setStatus(colVals.get(j).getText().replace("\n","").replace("\r",""));
-                        System.out.println("Status: "+data.getStatus());
+                        //System.out.println("Status: "+data.getStatus());
                     default:  
                         break;
                      
