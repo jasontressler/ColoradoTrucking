@@ -1,0 +1,8 @@
+[submodule "EnterpriseApps"]
+	path = EnterpriseApps
+	url = https://github.com/jasontressler/EnterpriseApps.git
+	branch = BlazorApp
+[submodule "ColoradoTrucking"]
+	path = ColoradoTrucking
+	url = ./ColoradoTrucking
+	branch = BlazorApp
