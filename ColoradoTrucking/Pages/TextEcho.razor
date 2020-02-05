@@ -1,0 +1,10 @@
+﻿@page "/textecho"
+
+<h3>Text Echo</h3>
+
+<input @bind="message" @bind:event="oninput" />
+<p>message: @message</p>
+
+@code {
+    string message;
+}
