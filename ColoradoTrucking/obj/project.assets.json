@@ -1110,11 +1110,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Jason\\source\\repos\\EnterpriseApps\\ColoradoTrucking\\ColoradoTrucking.csproj",
       "projectName": "ColoradoTrucking",
       "projectPath": "C:\\Users\\Jason\\source\\repos\\EnterpriseApps\\ColoradoTrucking\\ColoradoTrucking.csproj",
       "packagesPath": "C:\\Users\\Jason\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Jason\\source\\repos\\EnterpriseApps\\ColoradoTrucking\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Jason\\source\\repos\\ColoradoTrucking\\ColoradoTrucking.csproj",
+      "projectName": "ColoradoTrucking",
+      "projectPath": "C:\\Users\\Jason\\source\\repos\\ColoradoTrucking\\ColoradoTrucking.csproj",
+      "packagesPath": "C:\\Users\\Jason\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jason\\source\\repos\\ColoradoTrucking\\obj\\",
+>>>>>>> 41f65927f8b9a2873f19a2f7dae6bce3c1fbe528
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

@@ -366,6 +366,7 @@ C:\Users\Jason\source\repos\ColoradoTrucking\obj\Debug\netcoreapp3.1\Razor\Share
 C:\Users\Jason\source\repos\ColoradoTrucking\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
 C:\Users\Jason\source\repos\ColoradoTrucking\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\CompanySearch.razor.g.cs
 C:\Users\Jason\source\repos\ColoradoTrucking\obj\Debug\netcoreapp3.1\Razor\Pages\CompanySearch.razor.g.cs
+<<<<<<< HEAD
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -734,3 +735,5 @@ C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\obj\Debug\netcoreapp
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\obj\Debug\netcoreapp3.1\ColoradoTrucking.csproj.CopyComplete
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\obj\Debug\netcoreapp3.1\ColoradoTrucking.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\obj\Debug\netcoreapp3.1\ColoradoTrucking.pdb
+=======
+>>>>>>> 41f65927f8b9a2873f19a2f7dae6bce3c1fbe528
