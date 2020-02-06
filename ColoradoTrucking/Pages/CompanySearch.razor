@@ -1,4 +1,6 @@
 ﻿@page "/search"
+@using System.Threading.Tasks
+
 
 <h3>CompanySearch</h3>
 
@@ -10,6 +12,7 @@
     }
 </datalist>
 
+
 @code {
     string searchQuery;
     List<string> names = new List<string> { "Jason", "Brendan", "Jeff", "Levi", "John" };
@@ -17,7 +20,7 @@
 
     string SearchQuery {
         get => searchQuery;
-        set{
+        set {
             searchQuery = value;
             if (!string.IsNullOrEmpty(searchQuery)) {
                 _ = AutoFill(searchQuery);
@@ -26,20 +29,11 @@
     }
 
     async Task AutoFill(string query) {
-        results = (List<string>)names.Where(name => name.StartsWith(query));
+        //Put query or service here
+        await Task.Run(() => results = names.Where(name => name.Contains(query)).ToList());
+
         StateHasChanged();
     }
-
-    //List<string> Autofill() {
-    //    List<string> results = new List<string>();
-
-    //    foreach (string name in names) {
-    //        if (name.Contains(SearchQuery)) {
-    //            results.Add(name);
-    //        }
-    //    }
-
-    //    return results;
-    //}
 }
+
 
