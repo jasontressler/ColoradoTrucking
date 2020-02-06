@@ -79,8 +79,3 @@ SET @City = @XML.value('(/GeocodeResponse/result/address_component[type="localit
  @XML AS XMLResults
 
 END
-
-EXEC spGeocode
-@Address = '603 Aljo Drive',
-@City = 'Pittsburgh',
-@State = 'PA'
