@@ -1,6 +1,4 @@
 ﻿@page "/search"
-@using System.Threading.Tasks
-
 
 <h3>CompanySearch</h3>
 
@@ -28,10 +26,20 @@
     }
 
     async Task AutoFill(string query) {
-        //Put query or service here
-        await Task.Run(() => results = names.Where(name => name.Contains(query)).ToList());   
-
-    StateHasChanged();
+        results = (List<string>)names.Where(name => name.StartsWith(query));
+        StateHasChanged();
     }
+
+    //List<string> Autofill() {
+    //    List<string> results = new List<string>();
+
+    //    foreach (string name in names) {
+    //        if (name.Contains(SearchQuery)) {
+    //            results.Add(name);
+    //        }
+    //    }
+
+    //    return results;
+    //}
 }
 
