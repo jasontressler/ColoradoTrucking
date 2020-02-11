@@ -1,8 +1,5 @@
 ﻿@page "/search"
-<<<<<<< HEAD:Pages/CompanySearch.razor
 @inject Data.ILocationService LocationService
-=======
->>>>>>> 890a5a82624db5cb4da4f1914d8cdf09339a5ea3:ColoradoTrucking/Pages/CompanySearch.razor
 @using System.Threading.Tasks
 
 
@@ -34,7 +31,6 @@
 
     async Task AutoFill(string query) {
         //Put query or service here
-<<<<<<< HEAD:Pages/CompanySearch.razor
         noResults = false;
         try {
             var results = await LocationService.GetCompanyNames(query);
@@ -44,9 +40,6 @@
         catch (Exception ex) {
             Console.Error.WriteLine(ex.Message);
         }
-=======
-        await Task.Run(() => results = names.Where(name => name.Contains(query)).ToList());
->>>>>>> 890a5a82624db5cb4da4f1914d8cdf09339a5ea3:ColoradoTrucking/Pages/CompanySearch.razor
 
         StateHasChanged();
     }
