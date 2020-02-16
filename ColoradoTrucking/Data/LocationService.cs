@@ -12,7 +12,7 @@ namespace ColoradoTrucking.Data {
 
         public LocationService(HttpClient httpClient) {
             _httpClient = httpClient;
-            _httpClient.BaseAddress = new Uri("http://localhost:8080/");
+            _httpClient.BaseAddress = new Uri("https://locationclient.azurewebsites.net");
         }
 
         public async Task<List<string>> GetCompanyNames(string search) {

@@ -1,0 +1,48 @@
+﻿@page "/search"
+@inject Data.ILocationService LocationService
+@using System.Threading.Tasks
+
+
+<h3>CompanySearch</h3>
+
+<input class="search" list="results" @bind="@SearchQuery" @bind:event="oninput" />
+
+<datalist id="results">
+    @foreach (string company in companyList.Take(10)) {
+        <option value="@company"></option>
+    }
+</datalist>
+
+
+@code {
+    string searchQuery;
+    bool noResults;
+    List<string> companyList = new List<string>();
+
+    string SearchQuery {
+        get => searchQuery;
+        set {
+            searchQuery = value;
+            if (!string.IsNullOrEmpty(searchQuery)) {
+                _ = AutoFill(searchQuery);
+            }
+        }
+    }
+
+    async Task AutoFill(string query) {
+        //Put query or service here
+        noResults = false;
+        try {
+            var results = await LocationService.GetCompanyNames(query);
+            companyList = results;
+            noResults = results.Count == 0;
+        }
+        catch (Exception ex) {
+            Console.Error.WriteLine(ex.Message);
+        }
+
+        StateHasChanged();
+    }
+}
+
+
