@@ -20,15 +20,13 @@ public class LocationClient {
     public Object dbQuery(@RequestParam String query) {
         List<String> names = new ArrayList<String>();
         try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlserver://jason-school.database.windows.net:" +
-                    "1433;database=ColoradoTrucking;user=jwt11@jason-school;password=JwT#364075;encrypt=true;" +
-                    "trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;");
+            Connection connection = DriverManager.getConnection("Server=tcp:jason-school.database.windows.net,1433;Initial Catalog=Enterprise;Persist Security Info=False;User ID=jwt11;Password=JwT#364075;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             Statement statement = connection.createStatement();
-            String sql = String.format("select legal_name from OOS where legal_name like '%%%s%%'", query);
+            String sql = String.format("select legal_name from InService where Legal_Name like '%%%s%%'", query);
             ResultSet result = statement.executeQuery(sql);
             //connection.close();
             while (result.next()) {
-                names.add(result.getString("legal_name"));
+                names.add(result.getString("Legal_Name"));
                 //return new String(result.getString("legal_name");
             }
             return names;

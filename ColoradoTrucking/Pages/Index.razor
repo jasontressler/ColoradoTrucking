@@ -1,5 +1,23 @@
 ﻿@page "/"
+@using Components
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+@*<DropButton Class="btn-primary">
+        <Label>Classes</Label>
+        <List>
+            <ListItem Item="Google"></ListItem>
+        </List>
+    </DropButton>*@
+
+@{ List<string> sites = new List<string> { "Google", "Yahoo", "Bing" };}
+<Dropdown TItem="string" Class="btn-warning">
+    <InitialTip>This is a button.</InitialTip>
+    <ChildContent>
+        <DropdownListItem Item="@sites[0]">Google</DropdownListItem>
+        <DropdownListItem Item="@sites[1]">Yahoo</DropdownListItem>
+        <DropdownListItem Item="@sites[2]">Bing</DropdownListItem>
+    </ChildContent>
+</Dropdown>
