@@ -1,0 +1,3 @@
+[submodule "LocationClientBuild"]
+	path = LocationClientBuild
+	url = https://github.com/jasontressler/LocationClient.git
