@@ -8,5 +8,6 @@ using ColoradoTrucking.Data;
 namespace ColoradoTrucking.Data {
     public interface ILocationService {
         Task<List<string>> GetCompanyNames(string search);
+        Task<string> GetMarkerData();
     }
 }

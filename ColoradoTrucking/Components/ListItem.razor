@@ -1,0 +1,17 @@
+﻿@namespace Components
+
+<a class="dropdown-item" Item="@Item">@Item</a>
+
+@code {
+    [CascadingParameter(Name = "Dropdown")]
+    public DropButton Dropdown { get; set; }
+
+    [Parameter]
+    public string Item { get; set; }
+    [Parameter]
+    public RenderFragment List { get; set; }
+}
+
+@code {
+
+}
