@@ -1,0 +1,25 @@
+﻿@namespace Components
+
+    <div class="dropdown">
+        <button class="btn @Class dropdown-toggle mr-4" type="button" data-toggle="dropdown" @onclick="e => show=!show"
+                aria-haspopup="true" aria-expanded="false">
+            @Label
+        </button>
+        <CascadingValue name="Dropdown" Value="@this">
+            <div class="dropdown-menu @(show? "show":"")">
+                @List
+            </div>
+        </CascadingValue>
+    </div>
+
+@code {
+    private bool show = false;
+    [Parameter]
+    public RenderFragment List { get; set; }
+    [Parameter]
+    public EventCallback OnSelected {get;set;}
+    [Parameter]
+    public string Class { get; set; }
+    [Parameter]
+    public RenderFragment Label { get; set; }
+}

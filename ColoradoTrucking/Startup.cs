@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ColoradoTrucking.Data;
+using ColoradoTrucking.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ColoradoTrucking {
     public class Startup {
@@ -26,6 +28,8 @@ namespace ColoradoTrucking {
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddServerSideBlazor();
             services.AddHttpClient<ILocationService, LocationService>();
+            services.AddDbContext<EnterpriseContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

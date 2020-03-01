@@ -1,0 +1,14 @@
+﻿@inject IJSRuntime JSRuntime
+@namespace Components
+
+<div class="container" id="map" style="height:500px"/>
+
+
+    @code {
+        protected override async Task OnAfterRenderAsync(bool firstRender) {
+            if (firstRender) {
+                await JSRuntime.InvokeVoidAsync("initMap", null);
+                StateHasChanged();
+            }
+        }
+}
