@@ -1,17 +1,15 @@
 ﻿var map;
+var infowindow;
+var markers;
 
 function initMap() {
+    markers = [];
 
     // Initialize map object
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 39, lng: -105.7821 },
         zoom: 6.9, minZoom: 6.9, mapTypeControl: false, streetViewControl: false,
     });
-
-    // Add Markers script to map
-    var script = document.createElement('script');
-    script.src ='../js/Markers.js';
-    document.getElementsByTagName('head')[0].appendChild(script);
 
     // Set initial boundaries of map
     var bounds = new google.maps.LatLngBounds(
@@ -73,32 +71,47 @@ function initMap() {
         map.setCenter(new google.maps.LatLng(y, x));
     });
 
-    var infowindow = new google.maps.InfoWindow();
-    window.eqfeed_callback = function (results) {
-        for (var i = 0; i < results.features.length; i++) {
-            var coords = results.features[i].geometry.coordinates;
-            var f = results.features[i].properties;
-            var contentString =
-                '<p>' + f.name + '</p>' +
-                '<p>' + f.city + ', ' + f.state + ' ' + f.zip + '</p>' +
-                '<p>' + f.phone + '</p>' +
-                '<p>' + f.street + '</p>';
-            var latLng = new google.maps.LatLng(coords[0], coords[1]);
-            var marker = new google.maps.Marker({
-                position: latLng,
-                map: map
-            });
-            bindInfoWindow(marker, map, infowindow, contentString);
-            marker.addListener('mouseout', function () {
-                infowindow.close();
-            });
+    infowindow = new google.maps.InfoWindow();
+}
 
-        }
+function GenerateMarkers(results) {
+    //Clear old markers if they exist.
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
     }
-    function bindInfoWindow(marker, map, infowindow, content) {
-        marker.addListener('mouseover', function () {
-            infowindow.setContent(content);
-            infowindow.open(map, this);
+    markers = [];
+
+    //Add new markers
+    //var bounds = new google.maps.LatLngBounds();
+
+    for (var i = 0; i < results.features.length; i++) {
+        var coords = results.features[i].geometry.coordinates;
+        var f = results.features[i].properties;
+        var contentString =
+            '<p><b>' + f.name + '</b></p>' +
+            '<p>' + f.street + '<br/>' +
+            f.city + ', ' + f.state + ' ' + f.zip + '</p>' +
+            '<p>' + f.phone + '</p>';
+        var latLng = new google.maps.LatLng(coords[0], coords[1]);
+        //bounds.extend(latLng);
+        var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
         });
+        bindInfoWindow(marker, map, infowindow, contentString);
+        marker.addListener('mouseout', function () {
+            infowindow.close();
+        });
+        markers.push(marker);
     }
+    //map.setCenter(bounds.getCenter());
+    //map.fitBounds(bounds);
+}
+
+//Add mouseover listener to marker
+function bindInfoWindow(marker, map, infowindow, content) {
+    marker.addListener('mouseover', function () {
+        infowindow.setContent(content);
+        infowindow.open(map, this);
+    });
 }

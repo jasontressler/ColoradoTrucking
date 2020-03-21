@@ -7,11 +7,8 @@
 <Map></Map>
 
 @code{
-    GeoJson geoJson;
-
-    async Task GetGeoJson(GeoJson geoJson) {
-        this.geoJson = geoJson;
-        //await JSRuntime.InvokeAsync<GeoJson>("GenerateMarkers", $"location_callback({geoJson}");
+    async Task GetGeoJson(GeoJson results) {
+        await JSRuntime.InvokeAsync<GeoJson>("GenerateMarkers", results);
     }
 }
 
