@@ -76,6 +76,13 @@ using ColoradoTrucking.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 10 "C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\_Imports.razor"
+using GeoJson = ColoradoTrucking.Data.Responses.Body;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/textecho")]
     public partial class TextEcho : Microsoft.AspNetCore.Components.ComponentBase
     {

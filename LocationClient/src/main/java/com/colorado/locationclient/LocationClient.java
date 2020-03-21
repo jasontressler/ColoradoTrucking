@@ -21,7 +21,7 @@ import com.ohadr.common.utils.JsonUtils;
 @SpringBootApplication
 @RestController
 public class LocationClient {
-    private String connectionString = "jdbc:sqlserver://jason-school.database.windows.net:1433;database=Enterprise;user=jwt11@jason-school;password=JwT#364075;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+    private String connectionString = "jdbc:sqlserver://jason-school.database.windows.net:1433;database=Enterprise2;user=jwt11@jason-school;password=JwT#364075;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 
     public static void main(String[] args) {
         SpringApplication.run(LocationClient.class, args);
@@ -62,5 +62,18 @@ public class LocationClient {
         }
 
         return ResponseEntity.ok().headers(responseHeader).body(new FeatureResponse("Success! " + count + " records.", responseBody));
-    }   
+    }
+    /* 
+    @RequestMapping(value = "/fetch", method = RequestMethod.GET, params = "values")
+    public ResponseEntity<Response> fetchOos(@RequestParam String values) {
+        List<Feature> responseBody = new ArrayList<Feature>();
+        HttpHeaders responseHeader = new HttpHeaders();
+        responseHeader.setCacheControl("private, max-age=604800");
+        int count = 0;
+
+        try {
+            Connection connection = DriverManager.getConnection(connectionString);
+            PreparedStatement statement = connection.prepareStatement(SQL STATEMENT);
+            ResultSet result = statement.executeQuery(); 
+            */
 }

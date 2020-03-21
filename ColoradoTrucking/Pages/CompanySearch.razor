@@ -1,58 +1,38 @@
 ﻿@page "/search"
-@inject Data.ILocationService LocationService
+@inject Data.Services.ILocationService LocationService
+@using ColoradoTrucking.Data.Responses
+@using System.Threading
 @using System.Threading.Tasks
-@using Models
-@using System.Linq
+@using System.Linq;
+@using System.Data;
+@using System.Text.RegularExpressions;
+@using System.Text.Json;
 
 
 <h3>CompanySearch</h3>
 
-<input class="search" list="results" @bind="@SearchQuery" @bind:event="oninput" />
+<input class="search" id="search" list="results" size="75" @bind="@SearchQuery" @bind:event="oninput" @onchange="GetSelected"/>
+<button class="btn btn-primary"><i class="fas fa-search"></i></button>
 
 <datalist id="results">
-        @foreach (var company in companyList.Take(10)) {
-            <option value="@company"></option>
-        }
-   
+    @foreach (var city in companyList.Select(e => e.properties.city).Distinct().Take(5)) {
+        <option value="@city"></option>
+    }
+    @foreach (var zip in companyList.Select(e => e.properties.zip).Distinct().Take(5)) {
+        <option value="@zip"></option>
+    }
+    @foreach (var company in companyList.Take(5)) {
+        <option value="@company"></option>
+    }
 </datalist>
 
-@code{
-    string searchQuery;
-    bool noResults;
-    List<string> companyList = new List<string>();
-
-    string SearchQuery {
-        get => searchQuery;
-        set { searchQuery = value;
-            if (!string.IsNullOrEmpty(searchQuery)) {
-                Autofill(searchQuery);
-            }
-        }
-    }
-
-    void Autofill(string query) {
-        noResults = false;
-        using (var context = new EnterpriseContext()) {
-            var _companyList = context.InService.Select(n => n.LegalName).Where(n =>
-                n.Contains(query));
-            noResults = _companyList.Count() == 0;
-            companyList = _companyList.ToList();
-
-            
-
-
-        }
-        StateHasChanged();
-    }
-
-
-}
-
-<!-- #region API Call Method (deprecated) -->
-@*@code {
+<!-- #region API Call Method -->
+@code {
         string searchQuery;
+        bool isSearching;
+        CancellationTokenSource currentSearchCts;
+        List<Feature> companyList = new List<Feature>();
         bool noResults;
-        List<string> companyList = new List<string>();
 
         string SearchQuery {
             get => searchQuery;
@@ -64,20 +44,103 @@
             }
         }
 
-        async Task AutoFill(string query) {
-            //Put query or service here
+        bool IsSearching => isSearching || currentSearchCts != null;
+
+    [Parameter]
+    public EventCallback<GeoJson> LocationChanged { get; set; }
+
+    async Task AutoFill(string query) {
+        try {
+
             noResults = false;
-            try {
-                var results = await LocationService.GetCompanyNames(query);
-                companyList = results;
-                noResults = results.Count == 0;
-            }
-            catch (Exception ex) {
-                Console.Error.WriteLine(ex.Message);
+            currentSearchCts?.Cancel();
+            currentSearchCts = new CancellationTokenSource();
+            var cancellationToken = currentSearchCts.Token;
+
+            await Task.Delay(500);
+            if (!cancellationToken.IsCancellationRequested) {
+
+                var results = await LocationService.GetCompaniesAsync(query, cancellationToken);
+                if (!cancellationToken.IsCancellationRequested) {
+                    companyList = results.body.features;
+                }
             }
 
             StateHasChanged();
         }
-    }*@
+        catch (Exception ex) {
+            Console.Error.WriteLine(ex.Message + " " + ex.StackTrace);
+        }
+    }
 
+    void GetSelected(ChangeEventArgs e) {
+        Regex zipPattern = new Regex(@"[0-9]{5}(-[0-9]{4})?");
+        Regex cityPattern = new Regex(@"(\w+\s?){1,3}");
+        Regex addressPattern = new Regex(@"^(\w+\s?){1,}-\s.+");
+
+        string location = (string)e.Value;
+        GeoJson geoJson;
+        Console.WriteLine($"'{location}'");
+
+        if (zipPattern.IsMatch(location)) {
+            geoJson = new GeoJson(companyList.Where(e => e.properties.zip.Equals(location)).ToList<Feature>());
+        }
+        else if (addressPattern.IsMatch(location)) {
+            int pos = location.IndexOf("-");
+            location = location.Substring(0, pos - 2);
+            Console.WriteLine(location);
+            geoJson = new GeoJson(companyList.Where(e => e.properties.name.Equals(location)).ToList<Feature>());
+        }
+        else {
+            geoJson = new GeoJson(companyList.Where(e => e.properties.city.Equals(location)).ToList<Feature>());
+        }
+
+        if (geoJson != null) {
+            searchQuery = null;
+            noResults = false;
+            companyList = new List<Feature>();
+            LocationChanged.InvokeAsync(geoJson);
+        }
+
+        Console.WriteLine(JsonSerializer.Serialize(geoJson));
+    }
+
+}
+
+<!-- #endregion -->
+
+<!-- #region Scaffold Method -->
+@*@code{
+    string searchQuery;
+    bool noResults;
+    List<InService> companyList = new List<InService>();
+
+    string SearchQuery {
+        get => searchQuery;
+        set {
+            searchQuery = value;
+            if (!string.IsNullOrEmpty(searchQuery)) {
+                Autofill(searchQuery);
+            }
+        }
+    }
+
+    void Autofill(string query) {
+        noResults = false;
+        using (var context = new EnterpriseContext()) {
+            var _companyList = from c in context.InService
+                               where c.LegalName.StartsWith(query)
+                               || c.PhyStreet.StartsWith(query)
+                               || c.PhyCity.StartsWith(query)
+                               || c.PhyZip.StartsWith(query)
+                               select c;
+
+            FeatureCollection fc = _companyList as FeatureCollection;
+
+            noResults = _companyList.Count() == 0;
+            companyList = _companyList.ToList();
+
+        }
+        StateHasChanged();
+    }*@
 <!-- #endregion -->

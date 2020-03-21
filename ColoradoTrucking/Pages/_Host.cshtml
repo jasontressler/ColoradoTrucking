@@ -1,7 +1,7 @@
 ﻿@page "/"
 @namespace ColoradoTrucking.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@inject Data.ILocationService LocationService
+@inject Data.Services.ILocationService LocationService
 @{
     Layout = null;
 }
@@ -33,7 +33,8 @@
 
     <script src="_framework/blazor.server.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQVB6OPOABt5C4J_1CthO9yQbKAwIf5wg&callback=initMap"></script>
-    <script src="~/js/GoogleMap.js"></script>>
+    <script src="~/js/GoogleMap.js"></script>
+    <script src="https://kit.fontawesome.com/2a13dcb654.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
