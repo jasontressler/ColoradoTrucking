@@ -39,60 +39,60 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class ISCompany {
 
 @JsonProperty("DOT_NUMBER")
-public Integer dotNumber;
+public Integer DotNumber;
 @JsonProperty("name")
-public String legalName;
+public String LegalName;
 @JsonProperty("DBA_NAME")
-public String dbName;
+public String DbaName;
 @JsonProperty("CARRIER_OPERATION")
-public String carrierOperation;
+public String CarrierOperation;
 @JsonProperty("HM_FLAG")
-public String hmFlag;
+public String HmFlag;
 @JsonProperty("PC_FLAG")
-public String pcFlag;
+public String PcFlag;
 @JsonProperty("address")
-public String phyStreet;
+public String PhyStreet;
 @JsonProperty("city")
-public String phyCity;
+public String PhyCity;
 @JsonProperty("PHY_STATE")
-public String phyState;
+public String PhyState;
 @JsonProperty("zip")
-public String phyZip;
+public String PhyZip;
 @JsonProperty("PHY_COUNTRY")
-public String phyCountry;
+public String PhyCountry;
 @JsonProperty("MAILING_STREET")
-public String mailingStreet;
+public String MailingStreet;
 @JsonProperty("MAILING_CITY")
-public String mailingCity;
+public String MailingCity;
 @JsonProperty("MAILING_STATE")
-public String mailingState;
+public String MailingState;
 @JsonProperty("MAILING_ZIP")
-public String mailingZip;
+public String MailingZip;
 @JsonProperty("MAILING_COUNTRY")
-public String mailingCountry;
+public String MailingCountry;
 @JsonProperty("phone")
-public String telephone;
+public String Telephone;
 @JsonProperty("FAX")
-public String fax;
+public String Fax;
 @JsonProperty("email")
-public String emailAddress;
+public String EmailAddress;
 @JsonProperty("MCS150_DATE")
-public String mcs150Date;
+public String Mcs150Date;
 @JsonProperty("MCS150_MILEAGE")
-public Integer mcs150Mileage;
+public Integer Mcs150Mileage;
 @JsonProperty("MCS150_MILEAGE_YEAR")
 public Integer mcs150MileageYear;
 @JsonProperty("ADD_DATE")
-public String addDate;
+public String AddDate;
 @JsonProperty("OIC_STATE")
-public String oicState;
+public String OicState;
 @JsonProperty("NBR_POWER_UNIT")
-public Integer nbrPowerUnit;
+public Integer NbrPowerUnit;
 @JsonProperty("DRIVER_TOTAL")
-public Integer driverTotal;
+public Integer DriverTotal;
 @JsonProperty("latitude")
-public Double gpsLatitude;
+public Double GpsLatitude;
 @JsonProperty("longitude")
-public Double gpsLongitude;
+public Double GpsLongitude;
 
 }

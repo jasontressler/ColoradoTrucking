@@ -1,15 +1,15 @@
 package com.colorado.locationclient;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class FeatureGeometry {
-    @JsonProperty("latitude")
+    public double[] coordinates;
+    @JsonIgnore
     public Double gpsLatitude;
-    @JsonProperty("longitude")
+    @JsonIgnore
     public Double gpsLongitude;
 
     public FeatureGeometry(Double gpsLatitude, Double gpsLongitude) {
-        this.gpsLatitude = gpsLatitude;
-        this.gpsLongitude = gpsLongitude;
+        coordinates = new double[] {gpsLatitude, gpsLongitude};
     }
 }

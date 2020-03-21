@@ -20,5 +20,9 @@ namespace ColoradoTrucking {
                 .ConfigureWebHostDefaults(webBuilder => {
                     webBuilder.UseStartup<Startup>();
                 });
+
+        public static void LoadJson() {
+
+        }
     }
 }

@@ -21,37 +21,14 @@ import com.ohadr.common.utils.JsonUtils;
 @SpringBootApplication
 @RestController
 public class LocationClient {
-    private String connectionString = "jdbc:sqlserver://jason-school.database.windows.net:1433;database=Enterprise;user=jwt11@jason-school;password=JwT#364075;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+    private String connectionString = "jdbc:sqlserver://jason-school.database.windows.net:1433;database=Enterprise2;user=jwt11@jason-school;password=JwT#364075;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 
     public static void main(String[] args) {
         SpringApplication.run(LocationClient.class, args);
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET, params = "query")
-    public ResponseEntity<Object> dbQuery(@RequestParam String query) {
-        List<String> response = new ArrayList<String>();
-        HttpHeaders responseHeader = new HttpHeaders();
-        responseHeader.setCacheControl("private, max-age=604800");
-
-        try {
-            Connection connection = DriverManager.getConnection(connectionString);
-            Statement statement = connection.createStatement();
-            String sql = String.format("select legal_name from InService where Legal_Name like '%%%s%%'", query);
-            ResultSet result = statement.executeQuery(sql);
-            // connection.close();
-            while (result.next()) {
-                response.add(result.getString("Legal_Name"));
-                // return new String(result.getString("legal_name");
-            }
-        } catch (SQLException e) {
-            response.add("Bad SQL or connection. " + e.getMessage());
-        }
-
-        return ResponseEntity.ok().headers(responseHeader).body(response);
-    }
-
-    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
-    public ResponseEntity<GetAllResponse> getAll() {
+    public ResponseEntity<Response> dbQuery(@RequestParam String query) {
         List<Feature> responseBody = new ArrayList<Feature>();
         HttpHeaders responseHeader = new HttpHeaders();
         responseHeader.setCacheControl("private, max-age=604800");
@@ -59,10 +36,9 @@ public class LocationClient {
 
         try {
             Connection connection = DriverManager.getConnection(connectionString);
-            Statement statement = connection.createStatement();
-            //String sql = String.format("select top(10) * from InService");
-            String sql = String.format("select top(50) * from InService where gpsLatitude is not null and gpsLongitude is not null");
-            ResultSet result = statement.executeQuery(sql);
+            PreparedStatement statement = connection.prepareStatement("exec GetCompaniesLike " + query);
+            ResultSet result = statement.executeQuery();
+            
             while (result.next()){
                 responseBody.add(new Feature(
                     new FeatureProperties(
@@ -80,18 +56,24 @@ public class LocationClient {
                 ));
                 count++;
             }
-
+            connection.close();    
         } catch (SQLException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .headers(responseHeader)
-                .body(new GetAllResponse(e.getMessage()));
+            return ResponseEntity.badRequest().headers(responseHeader).body(new Response(e.getMessage()));
         }
 
-        return ResponseEntity.ok()
-            .headers(responseHeader)
-            .body(new GetAllResponse(
-                "Success! Returned " + count + " records.",
-                responseBody
-            ));
+        return ResponseEntity.ok().headers(responseHeader).body(new FeatureResponse("Success! " + count + " records.", responseBody));
     }
+    /* 
+    @RequestMapping(value = "/fetch", method = RequestMethod.GET, params = "values")
+    public ResponseEntity<Response> fetchOos(@RequestParam String values) {
+        List<Feature> responseBody = new ArrayList<Feature>();
+        HttpHeaders responseHeader = new HttpHeaders();
+        responseHeader.setCacheControl("private, max-age=604800");
+        int count = 0;
+
+        try {
+            Connection connection = DriverManager.getConnection(connectionString);
+            PreparedStatement statement = connection.prepareStatement(SQL STATEMENT);
+            ResultSet result = statement.executeQuery(); 
+            */
 }
