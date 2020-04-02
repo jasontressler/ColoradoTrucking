@@ -71,7 +71,7 @@ function initMap() {
         map.setCenter(new google.maps.LatLng(y, x));
     });
 
-    infowindow = new google.maps.InfoWindow();
+    infowindow = new google.maps.InfoWindow({ maxWidth: 300 });
 }
 
 function GenerateMarkers(results) {
@@ -82,30 +82,47 @@ function GenerateMarkers(results) {
     markers = [];
 
     //Add new markers
-    //var bounds = new google.maps.LatLngBounds();
 
     for (var i = 0; i < results.features.length; i++) {
         var coords = results.features[i].geometry.coordinates;
         var f = results.features[i].properties;
+
         var contentString =
-            '<p><b>' + f.name + '</b></p>' +
-            '<p>' + f.street + '<br/>' +
-            f.city + ', ' + f.state + ' ' + f.zip + '</p>' +
-            '<p>' + f.phone + '</p>';
+            '<p><b>' + f.inName + '</b></p>' +
+            '<p>' + f.inStreet + '<br/>' +
+            f.inCity + ', ' + f.inState + ' ' + f.inZip + '</p>' +
+            '<p>' + f.inPhone + '</p>';
+
+        if (f.outDOT != null) {
+            contentString +=
+                '<p><b>' + f.outName + '</b> was at this location <b>' +
+            (f.dayDiff < 31 ? f.dayDiff + '</b> days' : (f.dayDiff < 365) ? (f.dayDiff / 31).toFixed(1) + '</b> months' : (f.dayDiff / 365).toFixed(1) + '</b> years') +
+                ' before ' + f.inName + ' launched. <br/></p>';
+
+            if (f.flag > 0) {
+                contentString += '<p>This is a potential chameleon company.</p>';
+            }
+                
+        }
+
         var latLng = new google.maps.LatLng(coords[0], coords[1]);
-        //bounds.extend(latLng);
+
         var marker = new google.maps.Marker({
             position: latLng,
-            map: map
+            map: map,
+            optimized: false,
+            icon: {
+                url: getIcon(f.flag)
+            }
         });
+
         bindInfoWindow(marker, map, infowindow, contentString);
         marker.addListener('mouseout', function () {
             infowindow.close();
         });
         markers.push(marker);
-    }
-    //map.setCenter(bounds.getCenter());
-    //map.fitBounds(bounds);
+
+    }   
 }
 
 //Add mouseover listener to marker
@@ -114,4 +131,31 @@ function bindInfoWindow(marker, map, infowindow, content) {
         infowindow.setContent(content);
         infowindow.open(map, this);
     });
+}
+
+//Get icon image based on feature flag
+function getIcon(flag) {
+
+    switch (flag) {
+        case 0:
+            return '../img/zero-dot.png';
+            break;
+        case 1:
+            return '../img/one-dot.png'; 
+            break;
+        case 2:
+            return '../img/two-dot.png';
+            break;
+        case 3:
+            return '../img/three-dot.png';
+            break;
+        case 4:
+            return '../img/four-dot.png';
+            break;
+        case 5:
+            return '../img/five-dot.png';
+            break;
+        default:
+            return '../img/zero-dot.png';
+    }
 }

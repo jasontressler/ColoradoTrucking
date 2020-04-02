@@ -749,13 +749,9 @@ C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Authentication.Core.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Authentication.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Authentication.OAuth.dll
-C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Authorization.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Authorization.Policy.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Components.Authorization.dll
-C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Components.dll
-C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Components.Forms.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Components.Server.dll
-C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Components.Web.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Connections.Abstractions.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.CookiePolicy.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Cors.dll
@@ -784,7 +780,6 @@ C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Identity.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Localization.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Localization.Routing.dll
-C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Metadata.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Mvc.Abstractions.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Mvc.ApiExplorer.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Mvc.Core.dll
@@ -853,7 +848,6 @@ C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Options.ConfigurationExtensions.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Options.DataAnnotations.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.WebEncoders.dll
-C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.JSInterop.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.Net.Http.Headers.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.VisualBasic.Core.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\refs\Microsoft.VisualBasic.dll
@@ -1133,6 +1127,14 @@ C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\ColoradoTrucking.StaticWebAssets.xml
+C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\Blazored.Typeahead.dll
+C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authorization.dll
+C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.dll
+C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.Forms.dll
+C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.Web.dll
+C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Metadata.dll
+C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\bin\Debug\netcoreapp3.1\Microsoft.JSInterop.dll
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\obj\Debug\netcoreapp3.1\ColoradoTrucking.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\obj\Debug\netcoreapp3.1\ColoradoTrucking.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Jason\source\repos\EnterpriseApps\ColoradoTrucking\obj\Debug\netcoreapp3.1\RazorDeclaration\ColoradoTrucking.dll
