@@ -3,20 +3,12 @@ package com.colorado.locationclient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ohadr.common.utils.JsonUtils;
 
 @SpringBootApplication
 @RestController
@@ -42,17 +34,27 @@ public class LocationClient {
             while (result.next()){
                 responseBody.add(new Feature(
                     new FeatureProperties(
-                        result.getInt("DOT_NUMBER"),
-                        result.getString("LEGAL_NAME"),
-                        result.getString("PHY_STREET"),
-                        result.getString("PHY_CITY"),
-                        result.getString("PHY_STATE"),
-                        result.getString("PHY_ZIP"),
-                        result.getString("TELEPHONE"),
-                        result.getString("EMAIL_ADDRESS")),
+                        result.getInt("Flag"),
+                        result.getInt("dayDiff"),
+                        result.getString("inDOT"),
+                        result.getString("inName"),
+                        result.getString("inStreet"),
+                        result.getString("inCity"),
+                        result.getString("inState"),
+                        result.getString("inZip"),
+                        result.getString("inPhone"),
+                        result.getString("inEmail"),
+                        result.getString("inDate"),
+                        result.getString("outDOT"),
+                        result.getString("outName"),
+                        result.getString("outDate"),
+                        result.getString("outReason"),
+                        result.getString("outStatus")
+                        ),
                     new FeatureGeometry(
-                        result.getDouble("gpsLatitude"),
-                        result.getDouble("gpsLongitude"))
+                        result.getDouble("inLat"),
+                        result.getDouble("inLon")
+                    )                        
                 ));
                 count++;
             }
@@ -63,17 +65,4 @@ public class LocationClient {
 
         return ResponseEntity.ok().headers(responseHeader).body(new FeatureResponse("Success! " + count + " records.", responseBody));
     }
-    /* 
-    @RequestMapping(value = "/fetch", method = RequestMethod.GET, params = "values")
-    public ResponseEntity<Response> fetchOos(@RequestParam String values) {
-        List<Feature> responseBody = new ArrayList<Feature>();
-        HttpHeaders responseHeader = new HttpHeaders();
-        responseHeader.setCacheControl("private, max-age=604800");
-        int count = 0;
-
-        try {
-            Connection connection = DriverManager.getConnection(connectionString);
-            PreparedStatement statement = connection.prepareStatement(SQL STATEMENT);
-            ResultSet result = statement.executeQuery(); 
-            */
 }
