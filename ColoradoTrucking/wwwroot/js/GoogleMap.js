@@ -117,12 +117,6 @@ function bindInfoWindow(marker, map, infowindow, content) {
 }
 
 
-function ChangeH1() {
-    document.getElementById("change").innerHTML = "STATE CHANGED";
-    console.log("ChangeH1");
-}
-
-
 function populateTable() {
 
     var tableGuts = document.getElementById("toPopulate");
