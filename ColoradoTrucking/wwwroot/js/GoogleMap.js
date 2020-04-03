@@ -122,7 +122,9 @@ function GenerateMarkers(results) {
         });
         markers.push(marker);
 
-    }   
+    } 
+
+    return true;
 }
 
 //Add mouseover listener to marker
