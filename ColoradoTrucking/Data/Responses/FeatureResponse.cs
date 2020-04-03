@@ -1,29 +1,14 @@
-﻿namespace ColoradoTrucking.Data.Responses
-{
+﻿namespace ColoradoTrucking.Data.Responses {
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
-    using System.Text.Json;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using System.Net.Http;
-    using System.Threading.Tasks;
 
-    public partial class FeatureResponse : Response
-    {
-        [JsonProperty("message")]
+    public partial class FeatureResponse : Response {
         public string message { get; set; }
-
-        [JsonProperty("body")]
         public Body body { get; set; }
     }
 
-    public partial class Body
-    {
-        [JsonProperty("type")]
+    public partial class Body {
         public string type { get; set; }
-
-        [JsonProperty("features")]
         public List<Feature> features { get; set; }
 
         public Body() { }
@@ -34,91 +19,40 @@
         }
     }
 
-    public partial class Feature
-    {
-        [JsonProperty("type")]
+    public partial class Feature {
         public string type { get; set; }
-
-        [JsonProperty("properties")]
         public Properties properties { get; set; }
-
-        [JsonProperty("geometry")]
         public Geometry geometry { get; set; }
 
         public override string ToString() {
-            return $"{properties.name} {properties.GetAddress()}";
+            return $"{properties.inName} {properties.GetAddress()}";
         }
     }
 
-    public partial class Geometry
-    {
-        [JsonProperty("coordinates")]
-        public List<double> coordinates { get; set; }
-    }
-
-    public partial class Properties
-    {
-        [JsonProperty("id")]
-        public long id { get; set; }
-
-        [JsonProperty("name")]
-        public string name { get; set; }
-
-        [JsonProperty("street")]
-        public string street { get; set; }
-
-        [JsonProperty("city")]
-        public string city { get; set; }
-
-        [JsonProperty("state")]
-        public string state { get; set; }
-
-        [JsonProperty("zip")]
-        public string zip { get; set; }
-
-        [JsonProperty("phone")]
-        public string phone { get; set; }
-
-        [JsonProperty("email")]
-        public string email { get; set; }
-
-        [JsonProperty("distance")]
-        public double distance { get; set; }
-
-        [JsonProperty("Nearest_OSName")]
-        public String nearestOSName { get; set; }
-
-        [JsonProperty("OS_lat")]
-        public double OS_Lat { get; set; }
-
-        [JsonProperty("IS_Lat")]
-        public double OS_Long { get; set; }
+    public partial class Properties {
+        public int flag { get; set; }
+        public int dayDiff { get; set; }
+        public string inDOT { get; set; }
+        public string inName { get; set; }
+        public string inStreet { get; set; }
+        public string inCity { get; set; }
+        public string inState { get; set; }
+        public string inZip { get; set; }
+        public string inPhone { get; set; }
+        public string inEmail { get; set; }
+        public string inDate { get; set; }
+        public string outDOT { get; set; }
+        public string outName { get; set; }
+        public string outDate { get; set; }
+        public string outReason { get; set; }
+        public string outStatus { get; set; }
 
         public string GetAddress() {
-            return String.Format($"{street}, {city}, {state} {zip}");
+            return $"{inStreet} {inCity}, {inState} {inZip}";
         }
     }
 
-    public partial class FeatureResponse
-    {
-        public static FeatureResponse FromJson(string json) => JsonConvert.DeserializeObject<FeatureResponse>(json, ColoradoTrucking.Data.Responses.Converter.Settings);
-    }
-
-    public static class Serialize
-    {
-        public static string ToJson(this FeatureResponse self) => JsonConvert.SerializeObject(self, Converter.Settings);
-    }
-
-    internal static class Converter
-    {
-        public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
-        {
-            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            DateParseHandling = DateParseHandling.None,
-            Converters =
-            {
-                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-            },
-        };
-    }
+    public partial class Geometry {
+        public List<double> coordinates { get; set; }
+    }   
 }
