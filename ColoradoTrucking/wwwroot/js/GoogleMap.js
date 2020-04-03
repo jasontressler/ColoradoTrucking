@@ -135,6 +135,16 @@ function bindInfoWindow(marker, map, infowindow, content) {
     });
 }
 
+function populateTable() {
+
+    var tableGuts = document.getElementById("toPopulate");
+
+    for (var i = 0; i < results.features.length; i++) {
+        tableGuts + "fucking my ass from " + results;
+    }
+
+}
+
 //Get icon image based on feature flag
 function getIcon(flag) {
 
