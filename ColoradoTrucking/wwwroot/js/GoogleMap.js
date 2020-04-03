@@ -115,3 +115,20 @@ function bindInfoWindow(marker, map, infowindow, content) {
         infowindow.open(map, this);
     });
 }
+
+
+function ChangeH1() {
+    document.getElementById("change").innerHTML = "STATE CHANGED";
+    console.log("ChangeH1");
+}
+
+
+function populateTable() {
+
+    var tableGuts = document.getElementById("toPopulate");
+
+    for (var i = 0; i < results.features.length; i++) {
+        tableGuts + "fucking my ass from " + results;
+    }
+
+}

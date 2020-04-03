@@ -2,13 +2,40 @@
 @using Components
 @inject IJSRuntime JSRuntime
 
-<CompanySearch LocationChanged="GetGeoJson"></CompanySearch>
+    <section class="topPart">
+        <h2>Colorado's Premiere Logistics Verifier</h2>
 
-<Map></Map>
+            <CompanySearch LocationChanged="GetGeoJson"></CompanySearch>
+
+             <Map></Map>
+
+        <button type="button" class="btn btn-dark btn-large" onclick="ChangeH1()">SEARCH</button>
+    </section>
+
+<table class="table" id="resultsTable">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col"> DOT ID</th>
+            <th scope="col">County</th>
+            <th scope="col">Address</th>
+            <th scope="col">Address</th>
+        </tr>
+    </thead>
+    <tbody id="toPopulate">
+
+      
+    </tbody>
+</table>
+
 
 @code{
-    async Task GetGeoJson(GeoJson results) {
+    async Task GetGeoJson(GeoJson results)
+    {
         await JSRuntime.InvokeAsync<GeoJson>("GenerateMarkers", results);
+        
+        await JSRuntime.InvokeAsync<GeoJson>("PopulateTable", results);
     }
+
 }
 

@@ -1,26 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jason\\source\\repos\\EnterpriseApps\\ColoradoTrucking\\ColoradoTrucking.csproj": {}
+    "C:\\Users\\Levi\\source\\repos\\ColoradoLevi\\EnterpriseApps\\ColoradoTrucking\\ColoradoTrucking.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jason\\source\\repos\\EnterpriseApps\\ColoradoTrucking\\ColoradoTrucking.csproj": {
+    "C:\\Users\\Levi\\source\\repos\\ColoradoLevi\\EnterpriseApps\\ColoradoTrucking\\ColoradoTrucking.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jason\\source\\repos\\EnterpriseApps\\ColoradoTrucking\\ColoradoTrucking.csproj",
+        "projectUniqueName": "C:\\Users\\Levi\\source\\repos\\ColoradoLevi\\EnterpriseApps\\ColoradoTrucking\\ColoradoTrucking.csproj",
         "projectName": "ColoradoTrucking",
-        "projectPath": "C:\\Users\\Jason\\source\\repos\\EnterpriseApps\\ColoradoTrucking\\ColoradoTrucking.csproj",
-        "packagesPath": "C:\\Users\\Jason\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jason\\source\\repos\\EnterpriseApps\\ColoradoTrucking\\obj\\",
+        "projectPath": "C:\\Users\\Levi\\source\\repos\\ColoradoLevi\\EnterpriseApps\\ColoradoTrucking\\ColoradoTrucking.csproj",
+        "packagesPath": "C:\\Users\\Levi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Levi\\source\\repos\\ColoradoLevi\\EnterpriseApps\\ColoradoTrucking\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Jason\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Levi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -88,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
