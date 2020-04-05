@@ -133,14 +133,40 @@ function bindInfoWindow(marker, map, infowindow, content) {
     });
 }
 
-function populateTable() {
+function populateTable(results) {
+    console.log("populateTable");
 
     var tableGuts = document.getElementById("toPopulate");
 
     for (var i = 0; i < results.features.length; i++) {
-        tableGuts + "fucking my ass from " + results;
-    }
 
+        var f = results.features[i].properties;
+
+        switch (flag) {
+
+            case 0:
+                tableGuts.innerHTML('<p>FLAG 0</p>');
+                break;
+            case 1:
+                tableGuts.innerHTML('<p>FLAG 1</p>');
+                break;
+            case 2:
+                tableGuts.innerHTML('<p>FLAG 2</p>');
+                break;
+            case 3:
+                tableGuts.innerHTML('<p>FLAG 3</p>');
+                break;
+            case 4:
+                tableGuts.innerHTML('<p>FLAG 4</p>');
+                break;
+            case 5:
+                tableGuts.innerHTML('<p>FLAG 5</p>');
+                break;
+            default:
+                tableGuts.innerHTML("N/A");
+        }
+
+    }
 }
 
 //Get icon image based on feature flag
