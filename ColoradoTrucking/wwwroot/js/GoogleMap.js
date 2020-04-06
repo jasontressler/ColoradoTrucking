@@ -134,38 +134,200 @@ function bindInfoWindow(marker, map, infowindow, content) {
 }
 
 function populateTable(results) {
-    console.log("populateTable");
 
-    var tableGuts = document.getElementById("toPopulate");
-
+   
     for (var i = 0; i < results.features.length; i++) {
 
         var f = results.features[i].properties;
 
-        switch (flag) {
+        var tableGuts = document.getElementById("tableGuts");
 
-            case 0:
-                tableGuts.innerHTML('<p>FLAG 0</p>');
-                break;
-            case 1:
-                tableGuts.innerHTML('<p>FLAG 1</p>');
-                break;
-            case 2:
-                tableGuts.innerHTML('<p>FLAG 2</p>');
-                break;
-            case 3:
-                tableGuts.innerHTML('<p>FLAG 3</p>');
-                break;
-            case 4:
-                tableGuts.innerHTML('<p>FLAG 4</p>');
-                break;
-            case 5:
-                tableGuts.innerHTML('<p>FLAG 5</p>');
-                break;
-            default:
-                tableGuts.innerHTML("N/A");
+
+        //Needs an inservice VS outofservices
+
+        if (f.flag == 0) {
+
+                tableGuts.innerHTML +=
+
+                " <tr>" +
+
+                "<th scope='row'>" +
+
+                i + 
+
+                "</th>" +
+
+                " <td>" + f.inDOT + "</td > " +
+
+                "<td>" + f.inName + "</td>" +
+
+                "<td>" + f.inCity + "</td>" +
+
+                "<td>" + f.inPhone + "</td>" +
+
+                "<td> N/A </td>" +
+
+                "<td> N/A </td>" +
+
+                "<td>" + f.flag + "</td>" +
+
+                "</tr>";
         }
 
+        else if (f.flag == 1) {
+
+                tableGuts.innerHTML +=
+
+                " <tr>" +
+
+                "<th scope='row'>" +
+
+                i +
+
+                "</th>" +
+
+                " <td>" + f.inDOT + "</td > " +
+
+                "<td>" + f.inName + "</td>" +
+
+                "<td>" + f.inCity + "</td>" +
+
+                "<td>" + f.inPhone + "</td>" +
+
+                "<td> N/A </td>" +
+
+                "<td> N/A </td>" +
+
+                "<td>" + f.flag + "</td>" +
+
+                "</tr>";
+        }
+
+        else if (f.flag == 2) {
+
+                tableGuts.style("color=orange");
+                tableGuts.innerHTML +=
+
+                " <tr>" +
+
+                "<th scope='row'>" +
+
+                i +
+
+                "</th>" +
+
+                " <td>" + f.inDOT + "</td > " +
+
+                "<td>" + f.inName + "</td>" +
+
+                "<td>" + f.inCity + "</td>" +
+
+                "<td>" + f.inPhone + "</td>" +
+
+                "<td> N/A </td>" +
+
+                "<td> N/A </td>" +
+
+                "<td>" + f.flag + "</td>" +
+
+                "</tr>";
+        }
+
+        else if (f.flag == 3) {
+
+                tableGuts.style("color=red");
+                tableGuts.innerHTML +=
+
+                    " <tr>" +
+
+                    "<th scope='row'>" +
+
+                    i +
+
+                    "</th>" +
+
+                    " <td>" + f.outDOT + "</td > " +
+
+                    "<td>" + f.outName + "</td>" +
+
+                    "<td>" + "N/A" + "</td>" +
+
+                    "<td>" + "N/A" + "</td>" +
+
+                    "<td>" + f.inPhone + "</td>" +
+
+                    "<td>" + "N/A" + "</td>" +
+
+                    "<td>" + f.outReason + "</td>" +
+
+                    "<td>" + f.flag + "</td>" +
+
+                    "</tr>";
+        }
+
+        else if (f.flag == 4) {
+
+                tableGuts.style("color=red");
+                tableGuts.innerHTML +=
+
+                    " <tr>" +
+
+                    "<th scope='row'>" +
+
+                    i +
+
+                    "</th>" +
+
+                    " <td>" + f.outDOT + "</td > " +
+
+                    "<td>" + f.outName + "</td>" +
+
+                    "<td>" + "N/A" + "</td>" +
+
+                    "<td>" + "N/A" + "</td>" +
+
+                    "<td>" + f.inPhone + "</td>" +
+
+                    "<td>" + "N/A" + "</td>" +
+
+                    "<td>" + f.outReason + "</td>" +
+
+                    "<td>" + f.flag + "</td>" +
+
+                    "</tr>";
+        }
+
+        else if (f.flag == 5) {
+
+                tableGuts.style("color=red");
+                tableGuts.innerHTML +=
+
+                " <tr>" +
+
+                "<th scope='row'>" +
+
+                i +
+
+                "</th>" +
+
+                " <td>" + f.outDOT + "</td > " +
+
+                "<td>" + f.outName + "</td>" +
+
+                "<td>" + "N/A" + "</td>" +
+
+                "<td>" + "N/A" + "</td>" +
+
+                "<td>" + f.inPhone + "</td>" +
+
+                "<td>" + "N/A" + "</td>" +
+
+                "<td>" + f.outReason + "</td>" +
+
+                "<td>" + f.flag + "</td>" +
+
+                "</tr>";
+        }
     }
 }
 
