@@ -3,30 +3,32 @@
 @inject IJSRuntime JSRuntime
 
     <section class="topPart">
-        <h2>Colorado's Premiere Logistics Verifier</h2>
+        <h1>Colorado's Premiere Logistics Verifier</h1>
 
             <CompanySearch LocationChanged="GetGeoJson"></CompanySearch>
 
              <Map></Map>
 
-        <button type="button" class="btn btn-dark btn-large" onclick="ChangeH1()">SEARCH</button>
     </section>
 
-<table class="table" id="resultsTable">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col"> DOT ID</th>
-            <th scope="col">County</th>
-            <th scope="col">Address</th>
-            <th scope="col">Address</th>
-        </tr>
-    </thead>
-    <tbody id="toPopulate">
+    <table class="table" id="resultsTable">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col"> DOT ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">City</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Reason</th>
+                <th scope="col">FlagCode</th>
+            </tr>
+        </thead>
+        <tbody id="tableGuts">
+        </tbody>
+    </table>
 
-      
-    </tbody>
-</table>
+<h1 id="tableGuts">WOW</h1>
 
 
 @code{
@@ -34,7 +36,7 @@
     {
         await JSRuntime.InvokeAsync<GeoJson>("GenerateMarkers", results);
         
-        await JSRuntime.InvokeAsync<GeoJson>("PopulateTable", results);
+        await JSRuntime.InvokeAsync<GeoJson>("populateTable", results);
     }
 
 }
