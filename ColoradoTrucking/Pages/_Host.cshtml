@@ -14,7 +14,11 @@
     <base href="~/" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link href="css/site.css" rel="stylesheet" />
-    <link href="_content/Blazored.Typeahead/blazored-typeahead.css" rel="stylesheet" />
+    <script async src="~/js/GoogleMap.js"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQVB6OPOABt5C4J_1CthO9yQbKAwIf5wg&callback=initMap"></script>
+    <link href="css/addons/datatables.min.css" rel="stylesheet">
+    <link href="scss/addons/_datatables.scss" rel="stylesheet">
+
 </head>
 <body>
     <app>
@@ -33,12 +37,12 @@
     </div>
 
     <script src="_framework/blazor.server.js"></script>
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQVB6OPOABt5C4J_1CthO9yQbKAwIf5wg&callback=initMap"></script>
-    <script async src="~/js/GoogleMap.js"></script>
-    <script src="_content/Blazored.Typeahead/blazored-typeahead.js"></script>
-    <script src="https://kit.fontawesome.com/2a13dcb654.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/addons/datatables.min.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/2a13dcb654.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/ResultTable.js"></script>
 
 </body>
 </html>
