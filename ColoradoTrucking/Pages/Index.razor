@@ -3,40 +3,58 @@
 @inject IJSRuntime JSRuntime
 
     <section class="topPart">
-        <h1>Colorado's Premiere Logistics Verifier</h1>
-
-            <CompanySearch LocationChanged="GetGeoJson"></CompanySearch>
-
-             <Map></Map>
-
+        <div class="row">
+            <div class="col-12">
+                <h1>Colorado's Premiere Logistics Verifier</h1>
+            </div>
+        </div>      
+        <div class="row">
+            <div class="col-10 offset-1">
+                <CompanySearch LocationChanged="GetGeoJson"></CompanySearch>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <Map></Map>
+            </div>
+        </div>
     </section>
-
-    <table class="table" id="resultsTable">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col"> DOT ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">City</th>
-                <th scope="col">Address</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Reason</th>
-                <th scope="col">FlagCode</th>
-            </tr>
-        </thead>
-        <tbody id="tableGuts">
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-12">
+            <table class="table" id="resultsTable">
+                <thead>
+                    <tr>
+                        <th scope="col"> DOT ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Reason</th>
+                        <th scope="col">FlagCode</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
 
 <h1 id="tableGuts">WOW</h1>
 
 
-@code{
+@code{      
+    protected override async Task OnAfterRenderAsync(bool firstRender) {
+        if (firstRender) {
+            await JSRuntime.InvokeVoidAsync("initTable");
+        }
+    }
+
     async Task GetGeoJson(GeoJson results)
-    {
+{
         await JSRuntime.InvokeAsync<GeoJson>("GenerateMarkers", results);
-        
-        await JSRuntime.InvokeAsync<GeoJson>("populateTable", results);
+        await JSRuntime.InvokeAsync<GeoJson>("popTable", results);
+        //await JSRuntime.InvokeAsync<GeoJson>("populateTable", results);
+
+
+
     }
 
 }

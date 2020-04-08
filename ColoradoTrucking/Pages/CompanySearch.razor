@@ -9,51 +9,48 @@
 
 <!-- #region Original Search-->
 <!--Input box and search button-->
-    <form>
-        <div class="col-10 offset-1">
-            <div class="form-row form-group">
-                <div class=" col-11">
-                    <input class="search form-control" id="search" list="results" @bind="@SearchQuery" @bind:event="oninput" @onchange="GetSelected" autocomplete="off" />
-                </div>
-                <div class="col-1">
-                    <button type="button" class="btn btn-primary" id="btnSearch" @onclick="RenderMap" width="40"><img class="@GetSearchClass()" src="@GetSearchIcon()"/></button>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-12">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12 col-lg-4 col-xl-3">
-                            <input type="radio" class="form-check-inline" name="filter" id="all" value="0" @onchange="FilterChange" checked="@(filterChoice == 0)" /><label for="all">Show all results</label>
-                        </div>
-                        <div class="col-sm-12 col-md-12 col-lg-4 col-xl-3">
-                            <input type="radio" class="form-check-inline" name="filter" id="cham" value="1" @onchange="FilterChange" checked="@(filterChoice == 1)" /><label for="cham">Only chameleons</label>
-                        </div>
-                        <div class="col-sm-12 col-md-12 col-lg-5 col-xl-4">
-                            <input type="radio" class="form-check-inline" name="filter" id="noCham" value="2" @onchange="FilterChange" checked="@(filterChoice == 2)" /><label for="noCham">Only non-chameleons</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+<form>
+    <div class="row form-row form-group">
+        <div class=" col-xs-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
+            <input class="search form-control" id="search" list="results" @bind="@SearchQuery" @bind:event="oninput" @onchange="GetSelected" autocomplete="off" />
         </div>
-    </form>
+        <div class="col-1">
+            <button type="button" class="btn btn-primary" id="btnSearch" @onclick="RenderMap" width="40"><img class="@GetSearchClass()" src="@GetSearchIcon()" /></button>
+        </div>
+    </div>
+    <div class="row form-row">
+        <div class="form-group col-12">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-3">
+                    <input type="radio" class="form-check-inline" name="filter" id="all" value="0" @onchange="FilterChange" checked="@(filterChoice == 0)" /><label for="all">Show all results</label>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-3">
+                    <input type="radio" class="form-check-inline" name="filter" id="cham" value="1" @onchange="FilterChange" checked="@(filterChoice == 1)" /><label for="cham">Only chameleons</label>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-5 col-xl-4">
+                    <input type="radio" class="form-check-inline" name="filter" id="noCham" value="2" @onchange="FilterChange" checked="@(filterChoice == 2)" /><label for="noCham">Only non-chameleons</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 
 <!--Datalist that holds autocomplete dropdown values-->
 <datalist id="results">
-        @if (@companyList.Count > 0) {
-            <!--Add city values to list-->
-            @foreach (var city in companyList.Select(e => e.properties.inCity).Distinct().Take(5)) {
-                <option value="@city"></option>
-            }
-            <!--Add zip values to list-->
-            @foreach (var zip in companyList.Select(e => e.properties.inZip).Distinct().Take(5)) {
-                <option value="@zip"></option>
-            }
-            <!--Add individual company values to list-->
-            @foreach (var company in companyList.Take(5)) {
-                <option value="@company.properties.inName ~ @company.properties.GetAddress()"></option>
-            }
+    @if (@companyList.Count > 0) {
+        <!--Add city values to list-->
+        @foreach (var city in companyList.Select(e => e.properties.inCity).Distinct().Take(5)) {
+            <option value="@city"></option>
         }
+        <!--Add zip values to list-->
+        @foreach (var zip in companyList.Select(e => e.properties.inZip).Distinct().Take(5)) {
+            <option value="@zip"></option>
+        }
+        <!--Add individual company values to list-->
+        @foreach (var company in companyList.Take(5)) {
+            <option value="@company.properties.inName ~ @company.properties.GetAddress()"></option>
+        }
+    }
     }
 </datalist>
 
@@ -110,7 +107,7 @@
             //Notify component to redraw
             isSearching = false;
             StateHasChanged();
-            
+
         }
         catch (Exception ex) {
             Console.Error.WriteLine(ex.Message + " " + ex.StackTrace);
