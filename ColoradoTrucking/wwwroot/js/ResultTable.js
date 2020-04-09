@@ -2,17 +2,7 @@
 
 function initTable() {
     $(document).ready(function () {
-        t = $('#resultsTable').DataTable({
-            "columnDefs": [
-                { "width": "10%" },
-                { "width": "40%" },
-                { "width": "25%" },
-                { "width": "10%" },
-                { "width": "10%" },
-                { "width": "10%" },
-                { "width": "10%" }
-            ]
-        });
+        t = $('#resultsTable').DataTable();
     })
 }
 
@@ -27,6 +17,8 @@ function popTable(results) {
             f.inStreet,
             f.inCity,
             f.inPhone,
+            (f.outName == null ? "N/A" : f.outName),
+            (f.outDate == null ? "N/A" : f.outDate),
             (f.outReason == null ? "N/A" : f.outReason),
             f.flag
         ])
