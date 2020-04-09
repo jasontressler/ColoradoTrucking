@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using Components
+
 @inject IJSRuntime JSRuntime
 
     <section class="topPart">
@@ -29,6 +30,8 @@
                         <th scope="col">Address</th>
                         <th scope="col">City</th>
                         <th scope="col">Phone</th>
+                        <th scope="col">Previous</th>
+                        <th scope="col">Date</th>
                         <th scope="col">Reason</th>
                         <th scope="col">FlagCode</th>
                     </tr>
@@ -36,9 +39,6 @@
             </table>
         </div>
     </div>
-
-<h1 id="tableGuts">WOW</h1>
-
 
 @code{      
     protected override async Task OnAfterRenderAsync(bool firstRender) {

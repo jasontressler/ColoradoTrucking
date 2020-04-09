@@ -3,7 +3,7 @@
     using System.Collections.Generic;
 
     public partial class FeatureResponse : Response {
-        public string message { get; set; }
+        new public string message { get; set; }
         public Body body { get; set; }
     }
 

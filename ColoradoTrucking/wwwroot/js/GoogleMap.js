@@ -110,7 +110,7 @@ function GenerateMarkers(results) {
         var marker = new google.maps.Marker({
             position: latLng,
             map: map,
-            //optimized: false,
+            optimized: false,
             icon: {
                 url: getIcon(f.flag)
             }
