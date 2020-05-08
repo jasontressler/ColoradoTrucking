@@ -19,7 +19,7 @@ DECLARE @URL varchar(MAX)
  SET @URL = 'https://maps.google.com/maps/api/geocode/xml?sensor=false&address=' +
  CASE WHEN @Address IS NOT NULL THEN @Address ELSE '' END +
  CASE WHEN @City IS NOT NULL THEN ', ' + @City ELSE '' END +
- CASE WHEN @State IS NOT NULL THEN ', ' + @State+'&key=AIzaSyCrtIS9YBPKbsU1rlOb07f4a_34Zvz_hdY' ELSE '' END
+ CASE WHEN @State IS NOT NULL THEN ', ' + @State+'&key=[GEOCODER_API_KEY]' ELSE '' END
  SET @URL = REPLACE(@URL, ' ', '+')
 
  DECLARE @Response varchar(8000)
